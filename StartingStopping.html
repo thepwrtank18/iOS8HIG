@@ -23,7 +23,7 @@
     var resolved = document.createElement('a');
     resolved.href = href;
     // Only force navigation for local links; online links stay untouched.
-    if (resolved.protocol !== 'file:') return;
+    if (resolved.protocol !== 'file:' && resolved.origin !== window.location.origin) return;
     // Let the browser handle a fragment pointing at the current document.
     if (resolved.pathname === location.pathname &&
         resolved.search === location.search && resolved.hash) return;
